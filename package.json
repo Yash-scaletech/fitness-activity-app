@@ -27,8 +27,10 @@
 		"react-toastify": "^9.1.1",
 		"redux": "^4.2.0",
 		"redux-thunk": "^2.4.1",
-		"sass": "^1.56.1",
+		"sass": "^1.63.3",
+		"sass-loader": "^13.3.2",
 		"web-vitals": "^2.1.4",
+		"webpack": "^5.86.0",
 		"yup": "^0.32.11"
 	},
 	"devDependencies": {

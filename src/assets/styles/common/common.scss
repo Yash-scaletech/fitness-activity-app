@@ -84,6 +84,10 @@
 	width: 30%;
 }
 
+.width--33 {
+	width: 33%;
+}
+
 .width--35 {
 	width: 35%;
 }
@@ -1126,6 +1130,10 @@
 	fill: none;
 }
 
+.fill--black {
+	fill: $black;
+}
+
 .fill--white {
 	fill: $white;
 	&.with-opacity-50 {
@@ -1232,7 +1240,7 @@
 }
 
 .bg--red {
-	@include getShadesColorClasses($red, 'background-color');
+	background-color: getColor($red, 100);
 }
 
 .bg--blue {
