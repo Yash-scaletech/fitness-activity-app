@@ -16,21 +16,21 @@ const ProfileNav = () => {
 					<img src={profile} alt='profile' className='profile-image' />
 				</div>
 				<div className='mt--10'>
-					<p className='font-size--24 font--bold'>YASH UPADHYAY</p>
-					<p className='font-size--md font--medium mt--5'>yash.upadhyay@scaletech.xyz</p>
+					<p className='font-size--24 font--semi-bold'>YASH UPADHYAY</p>
+					<p className='font-size--md font--regular mt--5'>yash.upadhyay@scaletech.xyz</p>
 				</div>
 				<div className='width--full flex justify-content--evenly mt--20 mb--20'>
 					<div className='width--33 info'>
-						<p className='font-size--md font--medium'>Age</p>
-						<p className='mt--5'>22 years</p>
+						<p className='font-size--md font--regular'>Age</p>
+						<p className='mt--5 font--light'>22 years</p>
 					</div>
 					<div className='width--33 info'>
-						<p className='font-size--md font--medium'>Height</p>
-						<p className='mt--5'>180 cm</p>
+						<p className='font-size--md font--regular'>Height</p>
+						<p className='mt--5 font--light'>180 cm</p>
 					</div>
 					<div className='width--33'>
-						<p className='font-size--md font--medium'>Weight</p>
-						<p className='mt--5'>75 kg</p>
+						<p className='font-size--md font--regular'>Weight</p>
+						<p className='mt--5 font--light'>75 kg</p>
 					</div>
 				</div>
 			</div>

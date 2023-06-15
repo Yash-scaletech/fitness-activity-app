@@ -815,6 +815,10 @@
 	font-size: 2.5rem;
 }
 
+.font-size--48 {
+	font-size: 3rem;
+}
+
 .font-size--50 {
 	font-size: 3.125rem;
 }
@@ -842,8 +846,28 @@
 	line-height: 20px;
 }
 
+.line-height--25 {
+	line-height: 25px;
+}
+
 .line-height--28 {
 	line-height: 28px;
+}
+
+.line-height--28 {
+	line-height: 28px;
+}
+
+.line-height--30 {
+	line-height: 30px;
+}
+
+.line-height--40 {
+	line-height: 40px;
+}
+
+.line-height--50 {
+	line-height: 50px;
 }
 
 .line-height--70 {
@@ -1182,6 +1206,10 @@
 
 .text--primary {
 	color: $primary;
+}
+
+.text--secondary {
+	color: $secondary;
 }
 
 .text--white {

@@ -10,7 +10,7 @@ const Dashboard = () => {
 			<div className='profile width--20'>
 				<ProfileNav />
 			</div>
-			<div className='width--80'>
+			<div className='width--80 ml--40 mr--20'>
 				<DashboardData />
 			</div>
 		</div>
