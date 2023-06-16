@@ -57,7 +57,7 @@ const DashboardData: React.FC<IProps> = (props) => {
 
 	const percentage = 120;
 
-	const data: any = {
+	const data = {
 		labels: date,
 		datasets: [
 			{
