@@ -1,9 +1,103 @@
+import {
+	Chart as ChartJS,
+	CategoryScale,
+	LinearScale,
+	BarElement,
+	LineElement,
+	Title,
+	Tooltip,
+	Legend
+} from 'chart.js';
+import { Bar } from 'react-chartjs-2';
+
 import yoga from '../../../assets/images/yoga.png';
 import walking from '../../../assets/images/walking.png';
 import burn from '../../../assets/images/burn.png';
 import water from '../../../assets/images/water.png';
+import { useState } from 'react';
+
+ChartJS.register(CategoryScale, LinearScale, BarElement, LineElement, Title, Tooltip, Legend);
 
 const DashboardData = () => {
+	const [hourlyTemp, setHourlyTemp] = useState<any>([]);
+
+	const data: any = {
+		labels: ['Mon', 'tue', 'thus', 'thus', 'thus', 'thus'],
+		datasets: [
+			{
+				label: 'Temperature (°C)',
+				data: [
+					{
+						id: 1,
+						year: 2016,
+						userGain: 80000,
+						userLost: 823
+					},
+					{
+						id: 2,
+						year: 2017,
+						userGain: 45677,
+						userLost: 345
+					},
+					{
+						id: 3,
+						year: 2018,
+						userGain: 78888,
+						userLost: 555
+					},
+					{
+						id: 4,
+						year: 2019,
+						userGain: 90000,
+						userLost: 4555
+					},
+					{
+						id: 5,
+						year: 2020,
+						userGain: 4300,
+						userLost: 234
+					}
+				],
+				borderColor: 'rgb(255, 99, 132)',
+				backgroundColor: 'rgba(255, 99, 132, 0.5)'
+			},
+			{
+				label: '369',
+				data: ['3', '6', '9'],
+				backgroundColor: 'aqua',
+				borderColor: 'black',
+				borderWidth: 1
+			}
+		]
+	};
+
+	const options = {
+		responsive: true,
+		plugins: {
+			legend: {
+				position: 'top' as const,
+				fontColor: 'blue'
+			},
+			title: {
+				display: true,
+				text: `Today's Temperature`,
+				color: 'white'
+			}
+		},
+		scales: {
+			x: {
+				ticks: {
+					color: 'white'
+				}
+			},
+			y: {
+				ticks: {
+					color: 'white'
+				}
+			}
+		}
+	};
+
 	return (
 		<div>
 			<div className='name-wrapper flex align-items--center width--full mt--20'>
@@ -52,6 +146,11 @@ const DashboardData = () => {
 							<p className='font-size--22 line-height--30 font--regular'>water taken</p>
 						</div>
 					</div>
+				</div>
+			</div>
+			<div className='mt--25'>
+				<div className='bar-chart-wrapper'>
+					<Bar data={data} options={options} />
 				</div>
 			</div>
 		</div>

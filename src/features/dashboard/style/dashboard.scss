@@ -61,7 +61,7 @@
 
 	.activity-box {
 		background-color: #505050;
-		height: 125px;
+		height: 140px;
 		align-items: center;
 		justify-content: space-evenly;
 		border-radius: 25px;
@@ -81,5 +81,9 @@
 				width: 55px;
 			}
 		}
+	}
+
+	.bar-chart-wrapper {
+		width: 66%;
 	}
 }
