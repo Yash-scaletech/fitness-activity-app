@@ -14,6 +14,7 @@
 			"date": "2023-06-08",
 			"duration": 45,
 			"distance": 6.2,
+			"water_taken": 10,
 			"calories_burned": 500,
 			"heart_rate": {
 				"average": 150,
@@ -32,6 +33,7 @@
 			"date": "2023-06-07",
 			"duration": 60,
 			"distance": 15.3,
+			"water_taken": 12,
 			"calories_burned": 700,
 			"heart_rate": {
 				"average": 135,
@@ -49,6 +51,7 @@
 			"name": "Strength Training",
 			"date": "2023-06-06",
 			"duration": 75,
+			"water_taken": 16,
 			"calories_burned": 400,
 			"heart_rate": {
 				"average": 120,
@@ -70,6 +73,7 @@
 			"date": "2023-06-05",
 			"duration": 60,
 			"distance": 1.5,
+			"water_taken": 8,
 			"calories_burned": 350,
 			"heart_rate": {
 				"average": 125,
@@ -84,6 +88,7 @@
 			"date": "2023-06-04",
 			"duration": 120,
 			"distance": 8.5,
+			"water_taken": 5,
 			"calories_burned": 600,
 			"heart_rate": {
 				"average": 130,
@@ -96,6 +101,7 @@
 			"name": "Yoga",
 			"date": "2023-06-03",
 			"duration": 60,
+			"water_taken": 9,
 			"calories_burned": 200,
 			"heart_rate": {
 				"average": 90,
@@ -107,6 +113,7 @@
 			"name": "Elliptical",
 			"date": "2023-06-02",
 			"duration": 45,
+			"water_taken": 17,
 			"calories_burned": 400,
 			"heart_rate": {
 				"average": 125,
@@ -120,6 +127,7 @@
 			"name": "Basketball",
 			"date": "2023-06-01",
 			"duration": 90,
+			"water_taken": 20,
 			"calories_burned": 800,
 			"heart_rate": {
 				"average": 140,
@@ -131,6 +139,7 @@
 			"name": "Pilates",
 			"date": "2023-05-31",
 			"duration": 60,
+			"water_taken": 9,
 			"calories_burned": 250,
 			"heart_rate": {
 				"average": 100,
@@ -143,6 +152,7 @@
 			"date": "2023-05-30",
 			"duration": 30,
 			"distance": 2.5,
+			"water_taken": 6,
 			"calories_burned": 300,
 			"heart_rate": {
 				"average": 115,
@@ -155,6 +165,7 @@
 			"name": "Kickboxing",
 			"date": "2023-05-29",
 			"duration": 60,
+			"water_taken": 4,
 			"calories_burned": 600,
 			"heart_rate": {
 				"average": 150,
@@ -166,6 +177,7 @@
 			"name": "Soccer",
 			"date": "2023-05-28",
 			"duration": 120,
+			"water_taken": 17,
 			"calories_burned": 800,
 			"heart_rate": {
 				"average": 145,
@@ -177,6 +189,7 @@
 			"name": "CrossFit",
 			"date": "2023-05-27",
 			"duration": 60,
+			"water_taken": 13,
 			"calories_burned": 500,
 			"heart_rate": {
 				"average": 155,
@@ -188,6 +201,7 @@
 			"name": "Tennis",
 			"date": "2023-05-26",
 			"duration": 90,
+			"water_taken": 14,
 			"calories_burned": 700,
 			"heart_rate": {
 				"average": 140,
@@ -199,6 +213,7 @@
 			"name": "Dancing",
 			"date": "2023-05-25",
 			"duration": 45,
+			"water_taken": 10,
 			"calories_burned": 300,
 			"heart_rate": {
 				"average": 120,
@@ -210,6 +225,7 @@
 			"name": "Pilates",
 			"date": "2023-05-24",
 			"duration": 60,
+			"water_taken": 5,
 			"calories_burned": 250,
 			"heart_rate": {
 				"average": 100,
@@ -222,6 +238,7 @@
 			"date": "2023-05-23",
 			"duration": 30,
 			"distance": 2.5,
+			"water_taken": 2,
 			"calories_burned": 300,
 			"heart_rate": {
 				"average": 115,
@@ -234,6 +251,7 @@
 			"name": "Kickboxing",
 			"date": "2023-05-22",
 			"duration": 60,
+			"water_taken": 6,
 			"calories_burned": 600,
 			"heart_rate": {
 				"average": 150,
@@ -245,6 +263,7 @@
 			"name": "Soccer",
 			"date": "2023-05-21",
 			"duration": 120,
+			"water_taken": 10,
 			"calories_burned": 800,
 			"heart_rate": {
 				"average": 145,
@@ -256,6 +275,7 @@
 			"name": "CrossFit",
 			"date": "2023-05-20",
 			"duration": 60,
+			"water_taken": 14,
 			"calories_burned": 500,
 			"heart_rate": {
 				"average": 155,

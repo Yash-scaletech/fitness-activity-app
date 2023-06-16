@@ -36,6 +36,7 @@ const DashboardData: React.FC<IProps> = (props) => {
 
 	const [steps, setSteps] = useState<any>([]);
 	const [calories, setcalories] = useState<number[]>([]);
+	const [waterTaken, setWaterTaken] = useState<number[]>([]);
 	const [date, setDate] = useState<string[]>(['']);
 
 	useEffect(() => {
@@ -53,6 +54,11 @@ const DashboardData: React.FC<IProps> = (props) => {
 			return data.date;
 		});
 		setDate(labels);
+
+		const water = activityData.map((data) => {
+			return data.water_taken;
+		});
+		setWaterTaken(water);
 	}, []);
 
 	const percentage = 120;
@@ -64,13 +70,19 @@ const DashboardData: React.FC<IProps> = (props) => {
 				label: 'Steps',
 				data: steps,
 				backgroundColor: '#ED8E61',
-				borderRadius: 10
+				borderRadius: 15
 			},
 			{
 				label: 'Calories (kcal)',
 				data: calories,
 				backgroundColor: 'white',
-				borderRadius: 10
+				borderRadius: 15
+			},
+			{
+				label: 'Water (liters)',
+				data: waterTaken,
+				backgroundColor: '#2e1700',
+				borderRadius: 15
 			}
 		]
 	};
@@ -80,7 +92,12 @@ const DashboardData: React.FC<IProps> = (props) => {
 		plugins: {
 			legend: {
 				position: 'top' as const,
-				fontColor: 'blue'
+
+				labels: {
+					color: 'white',
+					usePointStyle: true,
+					padding: 20
+				}
 			},
 			title: {
 				display: true,
@@ -153,7 +170,7 @@ const DashboardData: React.FC<IProps> = (props) => {
 				</div>
 			</div>
 			<div className='flex mt--30'>
-				<div className='bar-chart-wrapper'>
+				<div className='bar-chart-wrapper mr--30'>
 					<Bar data={data} options={options} />
 				</div>
 				<div className='heart-box flex justify-content--center align-items--center position--relative font--semi-bold'>

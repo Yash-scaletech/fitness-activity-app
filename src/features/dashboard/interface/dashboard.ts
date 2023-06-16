@@ -18,6 +18,7 @@ export interface IActivity {
 	date: string;
 	duration: number;
 	distance?: number;
+	water_taken: number;
 	calories_burned: number;
 	heart_rate: IHeartRate;
 	steps?: number;
