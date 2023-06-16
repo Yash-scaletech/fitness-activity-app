@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import Lottie from 'lottie-react';
+import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import {
 	Chart as ChartJS,
 	CategoryScale,
@@ -11,58 +13,33 @@ import {
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 
+import heart_rate from '../JSON/heartRate.json';
+
 import yoga from '../../../assets/images/yoga.png';
 import walking from '../../../assets/images/walking.png';
 import burn from '../../../assets/images/burn.png';
 import water from '../../../assets/images/water.png';
+
+import 'react-circular-progressbar/dist/styles.css';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, LineElement, Title, Tooltip, Legend);
 
 const DashboardData = () => {
 	const [hourlyTemp, setHourlyTemp] = useState<any>([]);
 
+	const percentage = 120;
+
 	const data: any = {
 		labels: ['Mon', 'tue', 'thus', 'thus', 'thus', 'thus'],
 		datasets: [
 			{
-				label: 'Temperature (°C)',
-				data: [
-					{
-						id: 1,
-						year: 2016,
-						userGain: 80000,
-						userLost: 823
-					},
-					{
-						id: 2,
-						year: 2017,
-						userGain: 45677,
-						userLost: 345
-					},
-					{
-						id: 3,
-						year: 2018,
-						userGain: 78888,
-						userLost: 555
-					},
-					{
-						id: 4,
-						year: 2019,
-						userGain: 90000,
-						userLost: 4555
-					},
-					{
-						id: 5,
-						year: 2020,
-						userGain: 4300,
-						userLost: 234
-					}
-				],
+				label: 'Steps',
+				data: ['3', '6', '9'],
 				borderColor: 'rgb(255, 99, 132)',
 				backgroundColor: 'rgba(255, 99, 132, 0.5)'
 			},
 			{
-				label: '369',
+				label: 'Calories',
 				data: ['3', '6', '9'],
 				backgroundColor: 'aqua',
 				borderColor: 'black',
@@ -105,7 +82,7 @@ const DashboardData = () => {
 					<h1 className='line-height--70 font--medium'>
 						<span className='font-size--48 text--secondary'>Hello</span> Yash Upadhyay,
 					</h1>
-					<p className='font-size--xxl line-height--25 font--regular'>
+					<p className='font-size--xxl line-height--25 font--regular mt--15'>
 						Have a nice day and don't forget to take <br /> care of your health!
 					</p>
 				</div>
@@ -120,8 +97,8 @@ const DashboardData = () => {
 							<img src={walking} alt='walking' />
 						</div>
 						<div>
-							<p className='font-size--26 line-height--50 font--semi-bold'>1000/1500</p>
-							<p className='font-size--22 line-height--30 font--regular'>steps taken</p>
+							<p className='font-size--30 line-height--50 font--semi-bold'>1000/1500</p>
+							<p className='font-size--22 line-height--30 font--regular'>Steps taken</p>
 						</div>
 					</div>
 					<div className='flex justify-content--center width--33 activity-box mr--30'>
@@ -129,7 +106,7 @@ const DashboardData = () => {
 							<img src={burn} alt='burn' className='burn-image' />
 						</div>
 						<div>
-							<p className='font-size--26 line-height--50 font--semi-bold'>
+							<p className='font-size--30 line-height--50 font--semi-bold'>
 								500 <span>kcal</span>
 							</p>
 							<p className='font-size--22 line-height--30 font--regular'>Calories burned</p>
@@ -140,17 +117,38 @@ const DashboardData = () => {
 							<img src={water} alt='water' />
 						</div>
 						<div>
-							<p className='font-size--26 line-height--50 font--semi-bold'>
+							<p className='font-size--30 line-height--50 font--semi-bold'>
 								30 <span>liters</span>
 							</p>
-							<p className='font-size--22 line-height--30 font--regular'>water taken</p>
+							<p className='font-size--22 line-height--30 font--regular'>Water taken</p>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div className='mt--30'>
+			<div className='flex mt--30'>
 				<div className='bar-chart-wrapper'>
 					<Bar data={data} options={options} />
+				</div>
+				<div className='heart-box flex justify-content--center align-items--center position--relative font--semi-bold'>
+					<div className='heart-wrapper'>
+						<CircularProgressbar
+							value={percentage}
+							maxValue={180}
+							text={`${percentage}bpm`}
+							styles={buildStyles({
+								textSize: '20px',
+								pathTransitionDuration: 0.5,
+								pathColor: `rgba(237, 142, 97, 1)`,
+								textColor: '#ffffff',
+								trailColor: '#ffffff',
+								backgroundColor: '#ffffff'
+							})}
+						/>
+						<div className='flex align-items--center mt--20'>
+							<Lottie animationData={heart_rate} loop={true} />
+							<p className='font-size--22 line-height--30 font--regular'>Heart rate</p>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

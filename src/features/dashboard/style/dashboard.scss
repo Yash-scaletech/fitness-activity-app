@@ -55,16 +55,16 @@
 	}
 
 	.name-wrapper {
-		background-image: linear-gradient(to right, #ed8e61, #464446);
 		border-radius: 25px;
+		background-image: linear-gradient(to right, #ed8e61, #464446);
 	}
 
 	.activity-box {
-		background-color: #505050;
 		height: 140px;
 		align-items: center;
 		justify-content: space-evenly;
 		border-radius: 25px;
+		background-color: #505050;
 
 		.image-wrapper {
 			width: 90px;
@@ -85,5 +85,20 @@
 
 	.bar-chart-wrapper {
 		width: 66%;
+		margin-right: 48px;
+	}
+
+	.heart-box {
+		width: 33%;
+		background-color: #505050;
+		border-radius: 25px;
+
+		.heart-wrapper {
+			width: 200px;
+
+			p {
+				min-width: 104px;
+			}
+		}
 	}
 }
