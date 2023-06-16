@@ -35,29 +35,42 @@ const DashboardData: React.FC<IProps> = (props) => {
 	const { userData, activityData } = props;
 
 	const [steps, setSteps] = useState<any>([]);
-	const [calories, setcalories] = useState<any>([]);
+	const [calories, setcalories] = useState<number[]>([]);
+	const [date, setDate] = useState<string[]>(['']);
 
 	useEffect(() => {
-		console.log(activityData, 'l');
+		const datanew = activityData.map((data) => {
+			return data.steps;
+		});
+		setSteps(datanew);
+
+		const caloriesdata = activityData.map((data) => {
+			return data.calories_burned;
+		});
+		setcalories(caloriesdata);
+
+		const labels = activityData.map((data) => {
+			return data.date;
+		});
+		setDate(labels);
 	}, []);
 
 	const percentage = 120;
 
 	const data: any = {
-		labels: ['Mon', 'tue', 'thus', 'thus', 'thus', 'thus'],
+		labels: date,
 		datasets: [
 			{
 				label: 'Steps',
-				data: ['3', '6', '9'],
-				borderColor: 'rgb(255, 99, 132)',
-				backgroundColor: 'rgba(255, 99, 132, 0.5)'
+				data: steps,
+				backgroundColor: '#ED8E61',
+				borderRadius: 10
 			},
 			{
-				label: 'Calories',
-				data: ['3', '6', '9'],
-				backgroundColor: 'aqua',
-				borderColor: 'black',
-				borderWidth: 1
+				label: 'Calories (kcal)',
+				data: calories,
+				backgroundColor: 'white',
+				borderRadius: 10
 			}
 		]
 	};
@@ -71,7 +84,7 @@ const DashboardData: React.FC<IProps> = (props) => {
 			},
 			title: {
 				display: true,
-				text: `Today's Temperature`,
+				text: `Fitness Activity`,
 				color: 'white'
 			}
 		},
