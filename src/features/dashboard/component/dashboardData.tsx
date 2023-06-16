@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
 	Chart as ChartJS,
 	CategoryScale,
@@ -14,7 +15,6 @@ import yoga from '../../../assets/images/yoga.png';
 import walking from '../../../assets/images/walking.png';
 import burn from '../../../assets/images/burn.png';
 import water from '../../../assets/images/water.png';
-import { useState } from 'react';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, LineElement, Title, Tooltip, Legend);
 
@@ -100,7 +100,7 @@ const DashboardData = () => {
 
 	return (
 		<div>
-			<div className='name-wrapper flex align-items--center width--full mt--20'>
+			<div className='name-wrapper flex align-items--center width--full mt--30'>
 				<div className='width--70 p--10 ml--25'>
 					<h1 className='line-height--70 font--medium'>
 						<span className='font-size--48 text--secondary'>Hello</span> Yash Upadhyay,
@@ -113,7 +113,7 @@ const DashboardData = () => {
 					<img src={yoga} alt='profile' className='width--full yoga-image' />
 				</div>
 			</div>
-			<div className='mt--25'>
+			<div className='mt--30'>
 				<div className='flex width--full justify-content--evenly'>
 					<div className='flex justify-content--center width--33 activity-box mr--30'>
 						<div className='image-wrapper flex align-items--center justify-content--center'>
@@ -148,7 +148,7 @@ const DashboardData = () => {
 					</div>
 				</div>
 			</div>
-			<div className='mt--25'>
+			<div className='mt--30'>
 				<div className='bar-chart-wrapper'>
 					<Bar data={data} options={options} />
 				</div>
