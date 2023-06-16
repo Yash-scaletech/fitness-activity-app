@@ -15,6 +15,7 @@ import { Bar } from 'react-chartjs-2';
 
 import heart_rate from '../JSON/heartRate.json';
 
+import { NextArrow } from 'shared/icons/icons';
 import yoga from '../../../assets/images/yoga.png';
 import walking from '../../../assets/images/walking.png';
 import burn from '../../../assets/images/burn.png';
@@ -38,6 +39,7 @@ const DashboardData: React.FC<IProps> = (props) => {
 	const [calories, setcalories] = useState<number[]>([]);
 	const [waterTaken, setWaterTaken] = useState<number[]>([]);
 	const [date, setDate] = useState<string[]>(['']);
+	const [popup, setPopup] = useState<string>('');
 
 	useEffect(() => {
 		const datanew = activityData.map((data) => {
@@ -60,8 +62,6 @@ const DashboardData: React.FC<IProps> = (props) => {
 		});
 		setWaterTaken(water);
 	}, []);
-
-	const percentage = 120;
 
 	const data = {
 		labels: date,
@@ -141,9 +141,49 @@ const DashboardData: React.FC<IProps> = (props) => {
 							<img src={walking} alt='walking' />
 						</div>
 						<div>
-							<p className='font-size--30 line-height--50 font--semi-bold'>1000/1500</p>
-							<p className='font-size--22 line-height--30 font--regular'>Steps taken</p>
+							<p className='font-size--30 line-height--50 font--semi-bold'>{activityData[0].steps}</p>
+							<div
+								className='flex align-items--center cursor--pointer'
+								onClick={() => {
+									setPopup('steps');
+								}}
+							>
+								<p className='font-size--22 line-height--30 font--regular mr--10'>Steps taken</p>
+								<NextArrow />
+							</div>
 						</div>
+						{popup === 'steps' && (
+							<div className='position--absolute steps-detail'>
+								<div className='flex align-items--center justify-content--center mt--20'>
+									<div className='image-wrapper flex align-items--center justify-content--center'>
+										<img src={walking} alt='walking' />
+									</div>
+									<p className='font-size--30 line-height--50 font--semi-bold ml--15'>Steps taken</p>
+								</div>
+								<table className='m--0-auto mt--20'>
+									<tr>
+										<th className='p--10'>Date</th>
+										<th className='p--10'>Steps</th>
+									</tr>
+									{activityData.map((data: any) => {
+										return (
+											<>
+												{data.steps && (
+													<tr>
+														<td className='font-size--22 line-height--30 font--regular mr--10 p--20'>
+															{data.date}
+														</td>
+														<td className='font-size--22 line-height--30 font--regular p--20'>
+															{data.steps}
+														</td>
+													</tr>
+												)}
+											</>
+										);
+									})}
+								</table>
+							</div>
+						)}
 					</div>
 					<div className='flex justify-content--center width--33 activity-box mr--30'>
 						<div className='image-wrapper flex align-items--center justify-content--center'>
@@ -151,9 +191,17 @@ const DashboardData: React.FC<IProps> = (props) => {
 						</div>
 						<div>
 							<p className='font-size--30 line-height--50 font--semi-bold'>
-								500 <span>kcal</span>
+								{activityData[0].calories_burned} <span>kcal</span>
 							</p>
-							<p className='font-size--22 line-height--30 font--regular'>Calories burned</p>
+							<div
+								className='flex align-items--center cursor--pointer'
+								onClick={() => {
+									setPopup('calories');
+								}}
+							>
+								<p className='font-size--22 line-height--30 font--regular mr--10'>Calories burned</p>
+								<NextArrow />
+							</div>
 						</div>
 					</div>
 					<div className='flex justify-content--center width--33 activity-box'>
@@ -162,9 +210,17 @@ const DashboardData: React.FC<IProps> = (props) => {
 						</div>
 						<div>
 							<p className='font-size--30 line-height--50 font--semi-bold'>
-								30 <span>liters</span>
+								{activityData[0].water_taken} <span>liters</span>
 							</p>
-							<p className='font-size--22 line-height--30 font--regular'>Water taken</p>
+							<div
+								className='flex align-items--center cursor--pointer'
+								onClick={() => {
+									setPopup('water');
+								}}
+							>
+								<p className='font-size--22 line-height--30 font--regular mr--10'>Water taken</p>
+								<NextArrow />
+							</div>
 						</div>
 					</div>
 				</div>
@@ -176,9 +232,9 @@ const DashboardData: React.FC<IProps> = (props) => {
 				<div className='heart-box flex justify-content--center align-items--center position--relative font--semi-bold'>
 					<div className='heart-wrapper'>
 						<CircularProgressbar
-							value={percentage}
+							value={activityData[0].heart_rate.average}
 							maxValue={180}
-							text={`${percentage}bpm`}
+							text={`${activityData[0].heart_rate.average}bpm`}
 							styles={buildStyles({
 								textSize: '20px',
 								pathTransitionDuration: 0.5,
@@ -190,7 +246,10 @@ const DashboardData: React.FC<IProps> = (props) => {
 						/>
 						<div className='flex align-items--center mt--20'>
 							<Lottie animationData={heart_rate} loop={true} />
-							<p className='font-size--22 line-height--30 font--regular'>Heart rate</p>
+							<div className='flex align-items--center cursor--pointer'>
+								<p className='font-size--22 line-height--30 font--regular mr--10'>Heart rate</p>
+								<NextArrow />
+							</div>
 						</div>
 					</div>
 				</div>

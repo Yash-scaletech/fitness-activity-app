@@ -102,4 +102,20 @@
 			}
 		}
 	}
+
+	.steps-detail {
+		top: 100px;
+		left: 25%;
+		width: 50%;
+		height: 50%;
+		background-color: #464446;
+		border-radius: 25px;
+		z-index: 1;
+	}
+
+	table,
+	th,
+	td {
+		border: 1px solid white;
+	}
 }
