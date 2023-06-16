@@ -153,7 +153,13 @@ const DashboardData: React.FC<IProps> = (props) => {
 							</div>
 						</div>
 						{popup === 'steps' && (
-							<div className='position--absolute steps-detail'>
+							<div className='position--absolute steps-detail overflow--auto'>
+								<span
+									className='font-size--30 font--semi-bold cursor--pointer float-right mr--15 mt--5'
+									onClick={() => setPopup('')}
+								>
+									X
+								</span>
 								<div className='flex align-items--center justify-content--center mt--20'>
 									<div className='image-wrapper flex align-items--center justify-content--center'>
 										<img src={walking} alt='walking' />
@@ -203,6 +209,46 @@ const DashboardData: React.FC<IProps> = (props) => {
 								<NextArrow />
 							</div>
 						</div>
+						{popup === 'calories' && (
+							<div className='position--absolute steps-detail overflow--auto'>
+								<span
+									className='font-size--30 font--semi-bold cursor--pointer float-right mr--15 mt--5'
+									onClick={() => setPopup('')}
+								>
+									X
+								</span>
+								<div className='flex align-items--center justify-content--center mt--20'>
+									<div className='image-wrapper flex align-items--center justify-content--center'>
+										<img src={burn} alt='burn' className='burn-image' />
+									</div>
+									<p className='font-size--30 line-height--50 font--semi-bold ml--15'>
+										Calories burned
+									</p>
+								</div>
+								<table className='m--0-auto mt--20'>
+									<tr>
+										<th className='p--10'>Date</th>
+										<th className='p--10'>Calories (kcal)</th>
+									</tr>
+									{activityData.map((data: any) => {
+										return (
+											<>
+												{data.calories_burned && (
+													<tr>
+														<td className='font-size--22 line-height--30 font--regular mr--10 p--20'>
+															{data.date}
+														</td>
+														<td className='font-size--22 line-height--30 font--regular p--20 text--center'>
+															{data.calories_burned}
+														</td>
+													</tr>
+												)}
+											</>
+										);
+									})}
+								</table>
+							</div>
+						)}
 					</div>
 					<div className='flex justify-content--center width--33 activity-box'>
 						<div className='image-wrapper flex align-items--center justify-content--center'>
