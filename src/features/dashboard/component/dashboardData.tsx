@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Lottie from 'lottie-react';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import {
@@ -20,12 +20,26 @@ import walking from '../../../assets/images/walking.png';
 import burn from '../../../assets/images/burn.png';
 import water from '../../../assets/images/water.png';
 
+import { IActivity, IUser } from '../interface/dashboard';
+
 import 'react-circular-progressbar/dist/styles.css';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, LineElement, Title, Tooltip, Legend);
 
-const DashboardData = () => {
-	const [hourlyTemp, setHourlyTemp] = useState<any>([]);
+interface IProps {
+	userData: IUser;
+	activityData: IActivity[];
+}
+
+const DashboardData: React.FC<IProps> = (props) => {
+	const { userData, activityData } = props;
+
+	const [steps, setSteps] = useState<any>([]);
+	const [calories, setcalories] = useState<any>([]);
+
+	useEffect(() => {
+		console.log(activityData, 'l');
+	}, []);
 
 	const percentage = 120;
 
@@ -80,7 +94,7 @@ const DashboardData = () => {
 			<div className='name-wrapper flex align-items--center width--full mt--30'>
 				<div className='width--70 p--10 ml--25'>
 					<h1 className='line-height--70 font--medium'>
-						<span className='font-size--48 text--secondary'>Hello</span> Yash Upadhyay,
+						<span className='font-size--48 text--secondary'>Hello</span> {userData.name},
 					</h1>
 					<p className='font-size--xxl line-height--25 font--regular mt--15'>
 						Have a nice day and don't forget to take <br /> care of your health!

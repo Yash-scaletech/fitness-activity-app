@@ -3,14 +3,16 @@ import { Home } from 'shared/icons/icons';
 import profile from '../../../assets/images/yash-profile.jpg';
 import runBlack from '../../../assets/images/run-black.png';
 import runWhite from '../../../assets/images/run-white.png';
+import { IUser } from '../interface/dashboard';
 
 interface IProps {
 	isDashboard: boolean;
 	dashboardToggle: (toggle: boolean) => void;
+	userData: IUser;
 }
 
 const ProfileNav: React.FC<IProps> = (props) => {
-	const { isDashboard, dashboardToggle } = props;
+	const { isDashboard, dashboardToggle, userData } = props;
 
 	return (
 		<div>
@@ -19,21 +21,21 @@ const ProfileNav: React.FC<IProps> = (props) => {
 					<img src={profile} alt='profile' className='profile-image' />
 				</div>
 				<div className='mt--10'>
-					<p className='font-size--24 font--semi-bold'>YASH UPADHYAY</p>
-					<p className='font-size--md font--regular mt--5'>yash.upadhyay@scaletech.xyz</p>
+					<p className='font-size--24 font--semi-bold'>{userData.name}</p>
+					<p className='font-size--md font--regular mt--5'>{userData.email}</p>
 				</div>
 				<div className='width--full flex justify-content--evenly mt--30 mb--20'>
 					<div className='width--33 info'>
 						<p className='font-size--md font--medium'>Age</p>
-						<p className='mt--5 font--light'>22 years</p>
+						<p className='mt--5 font--light'>{userData.age} years</p>
 					</div>
 					<div className='width--33 info'>
 						<p className='font-size--md font--medium'>Height</p>
-						<p className='mt--5 font--light'>180 cm</p>
+						<p className='mt--5 font--light'>{userData.height} cm</p>
 					</div>
 					<div className='width--33'>
 						<p className='font-size--md font--medium'>Weight</p>
-						<p className='mt--5 font--light'>75 kg</p>
+						<p className='mt--5 font--light'>{userData.weight} kg</p>
 					</div>
 				</div>
 			</div>
