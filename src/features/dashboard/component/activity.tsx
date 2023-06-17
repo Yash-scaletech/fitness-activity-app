@@ -1,3 +1,7 @@
+import { useState } from 'react';
+
+import { NextArrow } from 'shared/icons/icons';
+
 import { IActivity } from '../interface/dashboard';
 
 interface IProps {
@@ -6,13 +10,15 @@ interface IProps {
 
 const Activity: React.FC<IProps> = (props) => {
 	const { activityData } = props;
+	const [isPopup, setIsPopup] = useState<boolean>(false);
 
 	return (
-		<div>
+		<div className='flex flex--wrap width--full justify-content--center align-items--center mt--20'>
 			{activityData.map((data) => (
-				<div className='m--20 flex'>
-					<div>{data.name}</div>
-					<div>{data.date}</div>
+				<div className='activity-wrapper width--30 flex justify-content--center align-items--center p--10 m--10'>
+					<p className='font-size--28 line-height--50 font--semi-bold mr--10'>{data.name}</p>
+					<NextArrow width='30' height='30' />
+					{/* <div>{data.date}</div>
 					<div>{data.duration}</div>
 					<div>{data.water_taken}</div>
 					<div>{data.calories_burned}</div>
@@ -33,7 +39,7 @@ const Activity: React.FC<IProps> = (props) => {
 					{data.laps && <div>{data.laps}</div>}
 					{data.pool_length && <div>{data.pool_length}</div>}
 					{data.strides && <div>{data.strides}</div>}
-					{data.strokes && <div>{data.strokes}</div>}
+					{data.strokes && <div>{data.strokes}</div>} */}
 				</div>
 			))}
 		</div>
