@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom';
+
 import { Home } from 'shared/icons/icons';
 
 import profile from '../../../assets/images/yash-profile.jpg';
@@ -13,6 +15,8 @@ interface IProps {
 
 const ProfileNav: React.FC<IProps> = (props) => {
 	const { isDashboard, dashboardToggle, userData } = props;
+
+	const navigate = useNavigate();
 
 	return (
 		<div>
@@ -44,7 +48,10 @@ const ProfileNav: React.FC<IProps> = (props) => {
 					className={`flex align-items--center p--20 ml--20 text--black font--bold cursor--pointer ${
 						isDashboard && 'nav-item'
 					}`}
-					onClick={() => dashboardToggle(true)}
+					onClick={() => {
+						dashboardToggle(true);
+						navigate('/dashboard');
+					}}
 				>
 					<Home width='25' height='25' className={`${isDashboard && 'fill--white'} fill--black mr--5`} />
 					<span className='font-size--md font--bold'>Dashboard</span>
@@ -53,7 +60,10 @@ const ProfileNav: React.FC<IProps> = (props) => {
 					className={`flex align-items--center p--20 ml--20 text--black font--bold cursor--pointer ${
 						!isDashboard && 'nav-item'
 					}`}
-					onClick={() => dashboardToggle(false)}
+					onClick={() => {
+						dashboardToggle(false);
+						navigate('/activity');
+					}}
 				>
 					{isDashboard && <img src={runBlack} alt='run' className='run-image mr--5' />}
 					{!isDashboard && <img src={runWhite} alt='run' className='run-image mr--5' />}

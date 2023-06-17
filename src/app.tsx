@@ -9,6 +9,8 @@ const App: React.FC = () => {
 		<Layout>
 			<Routes>
 				<Route path='/' element={<Dashboard />} />
+				<Route path='/dashboard' element={<Dashboard />} />
+				<Route path='/activity' element={<Dashboard />} />
 			</Routes>
 		</Layout>
 	);
