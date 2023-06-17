@@ -1,3 +1,13 @@
+export interface IDataSet {
+	steps: any[];
+	calories: number[];
+	waterTaken: number[];
+	avgHeartRate: number[];
+	maxHeartRate: number[];
+	date: string[];
+	popup: string;
+}
+
 export interface IData {
 	user: IUser;
 	activities: IActivity[];

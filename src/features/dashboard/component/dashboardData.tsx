@@ -21,7 +21,7 @@ import walking from '../../../assets/images/walking.png';
 import burn from '../../../assets/images/burn.png';
 import water from '../../../assets/images/water.png';
 
-import { IActivity, IUser } from '../interface/dashboard';
+import { IActivity, IDataSet, IUser } from '../interface/dashboard';
 
 import 'react-circular-progressbar/dist/styles.css';
 
@@ -35,45 +35,52 @@ interface IProps {
 const DashboardData: React.FC<IProps> = (props) => {
 	const { userData, activityData } = props;
 
-	const [steps, setSteps] = useState<any>([]);
-	const [calories, setcalories] = useState<number[]>([]);
-	const [waterTaken, setWaterTaken] = useState<number[]>([]);
-	const [avgHeartRate, setAvgHeartRate] = useState<number[]>([]);
-	const [maxHeartRate, setMaxHeartRate] = useState<number[]>([]);
-	const [date, setDate] = useState<string[]>(['']);
-	const [popup, setPopup] = useState<string>('');
+	const [data, setData] = useState<IDataSet>({
+		steps: [],
+		calories: [],
+		waterTaken: [],
+		avgHeartRate: [],
+		maxHeartRate: [],
+		date: [''],
+		popup: ''
+	});
+
+	const { steps, calories, waterTaken, avgHeartRate, maxHeartRate, date, popup } = data;
 
 	useEffect(() => {
-		const datanew = activityData.map((data) => {
-			return data.steps;
-		});
-		setSteps(datanew);
+		const datanew = activityData.map((data) => data.steps);
+		const caloriesdata = activityData.map((data) => data.calories_burned);
+		const labels = activityData.map((data) => data.date);
+		const water = activityData.map((data) => data.water_taken);
+		const avgHeartRate = activityData.map((data) => data.heart_rate.average);
+		const maxHeartRate = activityData.map((data) => data.heart_rate.max);
 
-		const caloriesdata = activityData.map((data) => {
-			return data.calories_burned;
+		setData({
+			steps: datanew,
+			calories: caloriesdata,
+			waterTaken: water,
+			avgHeartRate: avgHeartRate,
+			maxHeartRate: maxHeartRate,
+			date: labels,
+			popup: ''
 		});
-		setcalories(caloriesdata);
-
-		const labels = activityData.map((data) => {
-			return data.date;
-		});
-		setDate(labels);
-
-		const water = activityData.map((data) => {
-			return data.water_taken;
-		});
-		setWaterTaken(water);
-
-		const avgHeartRate = activityData.map((data) => {
-			return data.heart_rate.average;
-		});
-		setAvgHeartRate(avgHeartRate);
-
-		const maxHeartRate = activityData.map((data) => {
-			return data.heart_rate.max;
-		});
-		setMaxHeartRate(maxHeartRate);
 	}, []);
+
+	const chartData = (label: string, data: number[], backgroundColor: string) => ({
+		labels: date,
+		datasets: [
+			{
+				label: label,
+				data: data,
+				backgroundColor: backgroundColor,
+				borderRadius: 15
+			}
+		]
+	});
+
+	const stepsData = chartData('Steps', steps, '#ED8E61');
+	const caloriesData = chartData('Calories (kcal)', calories, '#ED8E61');
+	const waterData = chartData('Water (liters)', waterTaken, '#ED8E61');
 
 	const combineData = {
 		labels: date,
@@ -94,42 +101,6 @@ const DashboardData: React.FC<IProps> = (props) => {
 				label: 'Water (liters)',
 				data: waterTaken,
 				backgroundColor: '#2e1700',
-				borderRadius: 15
-			}
-		]
-	};
-
-	const stepsData = {
-		labels: date,
-		datasets: [
-			{
-				label: 'Steps',
-				data: steps,
-				backgroundColor: '#ED8E61',
-				borderRadius: 15
-			}
-		]
-	};
-
-	const caloriesData = {
-		labels: date,
-		datasets: [
-			{
-				label: 'Calories (kcal)',
-				data: calories,
-				backgroundColor: '#ED8E61',
-				borderRadius: 15
-			}
-		]
-	};
-
-	const waterData = {
-		labels: date,
-		datasets: [
-			{
-				label: 'Water (liters)',
-				data: waterTaken,
-				backgroundColor: '#ED8E61',
 				borderRadius: 15
 			}
 		]
@@ -211,7 +182,10 @@ const DashboardData: React.FC<IProps> = (props) => {
 							<div
 								className='flex align-items--center cursor--pointer'
 								onClick={() => {
-									setPopup('steps');
+									setData({
+										...data,
+										popup: 'steps'
+									});
 								}}
 							>
 								<p className='font-size--22 line-height--30 font--regular mr--10'>Steps taken</p>
@@ -222,7 +196,12 @@ const DashboardData: React.FC<IProps> = (props) => {
 							<div className='position--absolute steps-detail overflow--auto'>
 								<span
 									className='font-size--30 font--semi-bold cursor--pointer float-right mr--15 mt--5'
-									onClick={() => setPopup('')}
+									onClick={() => {
+										setData({
+											...data,
+											popup: ''
+										});
+									}}
 								>
 									X
 								</span>
@@ -243,7 +222,10 @@ const DashboardData: React.FC<IProps> = (props) => {
 							<div
 								className='flex align-items--center cursor--pointer'
 								onClick={() => {
-									setPopup('calories');
+									setData({
+										...data,
+										popup: 'calories'
+									});
 								}}
 							>
 								<p className='font-size--22 line-height--30 font--regular mr--10'>Calories burned</p>
@@ -254,7 +236,12 @@ const DashboardData: React.FC<IProps> = (props) => {
 							<div className='position--absolute steps-detail overflow--auto'>
 								<span
 									className='font-size--30 font--semi-bold cursor--pointer float-right mr--15 mt--5'
-									onClick={() => setPopup('')}
+									onClick={() => {
+										setData({
+											...data,
+											popup: ''
+										});
+									}}
 								>
 									X
 								</span>
@@ -275,7 +262,10 @@ const DashboardData: React.FC<IProps> = (props) => {
 							<div
 								className='flex align-items--center cursor--pointer'
 								onClick={() => {
-									setPopup('water');
+									setData({
+										...data,
+										popup: 'water'
+									});
 								}}
 							>
 								<p className='font-size--22 line-height--30 font--regular mr--10'>Water taken</p>
@@ -286,7 +276,12 @@ const DashboardData: React.FC<IProps> = (props) => {
 							<div className='position--absolute steps-detail overflow--auto'>
 								<span
 									className='font-size--30 font--semi-bold cursor--pointer float-right mr--15 mt--5'
-									onClick={() => setPopup('')}
+									onClick={() => {
+										setData({
+											...data,
+											popup: ''
+										});
+									}}
 								>
 									X
 								</span>
@@ -322,7 +317,10 @@ const DashboardData: React.FC<IProps> = (props) => {
 							<div
 								className='flex align-items--center cursor--pointer'
 								onClick={() => {
-									setPopup('heartrate');
+									setData({
+										...data,
+										popup: 'heartrate'
+									});
 								}}
 							>
 								<p className='font-size--22 line-height--30 font--regular mr--10'>Heart rate</p>
@@ -332,7 +330,12 @@ const DashboardData: React.FC<IProps> = (props) => {
 								<div className='position--absolute steps-detail overflow--auto'>
 									<span
 										className='font-size--30 font--semi-bold cursor--pointer float-right mr--15 mt--5'
-										onClick={() => setPopup('')}
+										onClick={() => {
+											setData({
+												...data,
+												popup: ''
+											});
+										}}
 									>
 										X
 									</span>
