@@ -26,10 +26,10 @@ const Dashboard = () => {
 
 	return (
 		<div className='container flex width--full height--full-viewport'>
-			<div className='profile width--20'>
+			<div className='profile position--fixed width--20'>
 				<ProfileNav isDashboard={isDashboard} dashboardToggle={dashboardToggle} userData={userData} />
 			</div>
-			<div className='width--80 ml--40 mr--20'>
+			<div className='dashboard-activity width--80 ml--40 mr--20'>
 				{isDashboard && <DashboardData userData={userData} activityData={activityData} />}
 				{!isDashboard && <Activity activityData={activityData} />}
 			</div>

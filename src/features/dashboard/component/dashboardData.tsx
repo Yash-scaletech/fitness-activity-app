@@ -195,7 +195,7 @@ const DashboardData: React.FC<IProps> = (props) => {
 						{popup === 'steps' && (
 							<div className='position--absolute steps-detail overflow--auto'>
 								<span
-									className='font-size--30 font--semi-bold cursor--pointer float-right mr--15 mt--5'
+									className='font-size--28 font--semi-bold cursor--pointer float-right mr--15 mt--5'
 									onClick={() => {
 										setData({
 											...data,
@@ -235,7 +235,7 @@ const DashboardData: React.FC<IProps> = (props) => {
 						{popup === 'calories' && (
 							<div className='position--absolute steps-detail overflow--auto'>
 								<span
-									className='font-size--30 font--semi-bold cursor--pointer float-right mr--15 mt--5'
+									className='font-size--28 font--semi-bold cursor--pointer float-right mr--15 mt--5'
 									onClick={() => {
 										setData({
 											...data,
@@ -275,7 +275,7 @@ const DashboardData: React.FC<IProps> = (props) => {
 						{popup === 'water' && (
 							<div className='position--absolute steps-detail overflow--auto'>
 								<span
-									className='font-size--30 font--semi-bold cursor--pointer float-right mr--15 mt--5'
+									className='font-size--28 font--semi-bold cursor--pointer float-right mr--15 mt--5'
 									onClick={() => {
 										setData({
 											...data,
@@ -306,7 +306,7 @@ const DashboardData: React.FC<IProps> = (props) => {
 							styles={buildStyles({
 								textSize: '20px',
 								pathTransitionDuration: 0.5,
-								pathColor: `rgba(237, 142, 97, 1)`,
+								pathColor: `#ED8E61`,
 								textColor: '#ffffff',
 								trailColor: '#ffffff',
 								backgroundColor: '#ffffff'
@@ -329,7 +329,7 @@ const DashboardData: React.FC<IProps> = (props) => {
 							{popup === 'heartrate' && (
 								<div className='position--absolute steps-detail overflow--auto'>
 									<span
-										className='font-size--30 font--semi-bold cursor--pointer float-right mr--15 mt--5'
+										className='font-size--28 font--semi-bold cursor--pointer float-right mr--15 mt--5'
 										onClick={() => {
 											setData({
 												...data,
