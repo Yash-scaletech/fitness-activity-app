@@ -9,7 +9,7 @@
 	},
 	"activities": [
 		{
-			"id": "1",
+			"id": 1,
 			"name": "Running",
 			"date": "2023-06-08",
 			"duration": 45,
@@ -28,7 +28,7 @@
 			"elevation_gain": 80
 		},
 		{
-			"id": "2",
+			"id": 2,
 			"name": "Cycling",
 			"date": "2023-06-07",
 			"duration": 60,
@@ -47,7 +47,7 @@
 			"elevation_gain": 120
 		},
 		{
-			"id": "3",
+			"id": 3,
 			"name": "Strength Training",
 			"date": "2023-06-06",
 			"duration": 75,
@@ -68,7 +68,7 @@
 			}
 		},
 		{
-			"id": "4",
+			"id": 4,
 			"name": "Swimming",
 			"date": "2023-06-05",
 			"duration": 60,
@@ -83,7 +83,7 @@
 			"pool_length": 25
 		},
 		{
-			"id": "5",
+			"id": 5,
 			"name": "Hiking",
 			"date": "2023-06-04",
 			"duration": 120,
@@ -97,7 +97,7 @@
 			"elevation_gain": 450
 		},
 		{
-			"id": "6",
+			"id": 6,
 			"name": "Yoga",
 			"date": "2023-06-03",
 			"duration": 60,
@@ -109,7 +109,7 @@
 			}
 		},
 		{
-			"id": "7",
+			"id": 7,
 			"name": "Elliptical",
 			"date": "2023-06-02",
 			"duration": 45,
@@ -123,7 +123,7 @@
 			"strides": 3500
 		},
 		{
-			"id": "8",
+			"id": 8,
 			"name": "Basketball",
 			"date": "2023-06-01",
 			"duration": 90,
@@ -135,7 +135,7 @@
 			}
 		},
 		{
-			"id": "9",
+			"id": 9,
 			"name": "Pilates",
 			"date": "2023-05-31",
 			"duration": 60,
@@ -147,7 +147,7 @@
 			}
 		},
 		{
-			"id": "10",
+			"id": 10,
 			"name": "Rowing",
 			"date": "2023-05-30",
 			"duration": 30,
@@ -161,7 +161,7 @@
 			"strokes": 500
 		},
 		{
-			"id": "11",
+			"id": 11,
 			"name": "Kickboxing",
 			"date": "2023-05-29",
 			"duration": 60,
@@ -173,7 +173,7 @@
 			}
 		},
 		{
-			"id": "12",
+			"id": 12,
 			"name": "Soccer",
 			"date": "2023-05-28",
 			"duration": 120,
@@ -185,7 +185,7 @@
 			}
 		},
 		{
-			"id": "13",
+			"id": 13,
 			"name": "CrossFit",
 			"date": "2023-05-27",
 			"duration": 60,
@@ -197,7 +197,7 @@
 			}
 		},
 		{
-			"id": "14",
+			"id": 14,
 			"name": "Tennis",
 			"date": "2023-05-26",
 			"duration": 90,
@@ -209,7 +209,7 @@
 			}
 		},
 		{
-			"id": "15",
+			"id": 15,
 			"name": "Dancing",
 			"date": "2023-05-25",
 			"duration": 45,

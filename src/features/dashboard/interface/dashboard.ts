@@ -23,7 +23,7 @@ export interface IUser {
 }
 
 export interface IActivity {
-	id: string;
+	id: number;
 	name: string;
 	date: string;
 	duration: number;
