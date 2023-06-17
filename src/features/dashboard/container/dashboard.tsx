@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react';
 
 import data from '../JSON/activityData.json';
 
-import DashboardData from './dashboardData';
-import ProfileNav from './profileNav';
-import Activity from './activity';
+import DashboardData from '../component/dashboardData';
+import ProfileNav from '../component/profileNav';
+import Activity from '../component/activity';
 
 import { IActivity, IUser } from '../interface/dashboard';
 
