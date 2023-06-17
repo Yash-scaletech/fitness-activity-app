@@ -38,6 +38,8 @@ const DashboardData: React.FC<IProps> = (props) => {
 	const [steps, setSteps] = useState<any>([]);
 	const [calories, setcalories] = useState<number[]>([]);
 	const [waterTaken, setWaterTaken] = useState<number[]>([]);
+	const [avgHeartRate, setAvgHeartRate] = useState<number[]>([]);
+	const [maxHeartRate, setMaxHeartRate] = useState<number[]>([]);
 	const [date, setDate] = useState<string[]>(['']);
 	const [popup, setPopup] = useState<string>('');
 
@@ -61,9 +63,19 @@ const DashboardData: React.FC<IProps> = (props) => {
 			return data.water_taken;
 		});
 		setWaterTaken(water);
+
+		const avgHeartRate = activityData.map((data) => {
+			return data.heart_rate.average;
+		});
+		setAvgHeartRate(avgHeartRate);
+
+		const maxHeartRate = activityData.map((data) => {
+			return data.heart_rate.max;
+		});
+		setMaxHeartRate(maxHeartRate);
 	}, []);
 
-	const data = {
+	const combineData = {
 		labels: date,
 		datasets: [
 			{
@@ -82,6 +94,60 @@ const DashboardData: React.FC<IProps> = (props) => {
 				label: 'Water (liters)',
 				data: waterTaken,
 				backgroundColor: '#2e1700',
+				borderRadius: 15
+			}
+		]
+	};
+
+	const stepsData = {
+		labels: date,
+		datasets: [
+			{
+				label: 'Steps',
+				data: steps,
+				backgroundColor: '#ED8E61',
+				borderRadius: 15
+			}
+		]
+	};
+
+	const caloriesData = {
+		labels: date,
+		datasets: [
+			{
+				label: 'Calories (kcal)',
+				data: calories,
+				backgroundColor: '#ED8E61',
+				borderRadius: 15
+			}
+		]
+	};
+
+	const waterData = {
+		labels: date,
+		datasets: [
+			{
+				label: 'Water (liters)',
+				data: waterTaken,
+				backgroundColor: '#ED8E61',
+				borderRadius: 15
+			}
+		]
+	};
+
+	const heartRateData = {
+		labels: date,
+		datasets: [
+			{
+				label: 'Average Heart Rate (bpm)',
+				data: avgHeartRate,
+				backgroundColor: '#ED8E61',
+				borderRadius: 15
+			},
+			{
+				label: 'Maximum Heart Rate (bpm)',
+				data: maxHeartRate,
+				backgroundColor: 'white',
 				borderRadius: 15
 			}
 		]
@@ -160,34 +226,9 @@ const DashboardData: React.FC<IProps> = (props) => {
 								>
 									X
 								</span>
-								<div className='flex align-items--center justify-content--center mt--20'>
-									<div className='image-wrapper flex align-items--center justify-content--center'>
-										<img src={walking} alt='walking' />
-									</div>
-									<p className='font-size--30 line-height--50 font--semi-bold ml--15'>Steps taken</p>
+								<div className='individual-chart-wrapper mr--30'>
+									<Bar data={stepsData} options={options} />
 								</div>
-								<table className='m--0-auto mt--20'>
-									<tr>
-										<th className='p--10'>Date</th>
-										<th className='p--10'>Steps</th>
-									</tr>
-									{activityData.map((data: any) => {
-										return (
-											<>
-												{data.steps && (
-													<tr>
-														<td className='font-size--22 line-height--30 font--regular mr--10 p--20'>
-															{data.date}
-														</td>
-														<td className='font-size--22 line-height--30 font--regular p--20'>
-															{data.steps}
-														</td>
-													</tr>
-												)}
-											</>
-										);
-									})}
-								</table>
 							</div>
 						)}
 					</div>
@@ -217,36 +258,9 @@ const DashboardData: React.FC<IProps> = (props) => {
 								>
 									X
 								</span>
-								<div className='flex align-items--center justify-content--center mt--20'>
-									<div className='image-wrapper flex align-items--center justify-content--center'>
-										<img src={burn} alt='burn' className='burn-image' />
-									</div>
-									<p className='font-size--30 line-height--50 font--semi-bold ml--15'>
-										Calories burned
-									</p>
+								<div className='individual-chart-wrapper mr--30'>
+									<Bar data={caloriesData} options={options} />
 								</div>
-								<table className='m--0-auto mt--20'>
-									<tr>
-										<th className='p--10'>Date</th>
-										<th className='p--10'>Calories (kcal)</th>
-									</tr>
-									{activityData.map((data: any) => {
-										return (
-											<>
-												{data.calories_burned && (
-													<tr>
-														<td className='font-size--22 line-height--30 font--regular mr--10 p--20'>
-															{data.date}
-														</td>
-														<td className='font-size--22 line-height--30 font--regular p--20 text--center'>
-															{data.calories_burned}
-														</td>
-													</tr>
-												)}
-											</>
-										);
-									})}
-								</table>
 							</div>
 						)}
 					</div>
@@ -268,14 +282,27 @@ const DashboardData: React.FC<IProps> = (props) => {
 								<NextArrow />
 							</div>
 						</div>
+						{popup === 'water' && (
+							<div className='position--absolute steps-detail overflow--auto'>
+								<span
+									className='font-size--30 font--semi-bold cursor--pointer float-right mr--15 mt--5'
+									onClick={() => setPopup('')}
+								>
+									X
+								</span>
+								<div className='individual-chart-wrapper mr--30'>
+									<Bar data={waterData} options={options} />
+								</div>
+							</div>
+						)}
 					</div>
 				</div>
 			</div>
 			<div className='flex mt--30'>
 				<div className='bar-chart-wrapper mr--30'>
-					<Bar data={data} options={options} />
+					<Bar data={combineData} options={options} />
 				</div>
-				<div className='heart-box flex justify-content--center align-items--center position--relative font--semi-bold'>
+				<div className='heart-box flex justify-content--center align-items--center font--semi-bold'>
 					<div className='heart-wrapper'>
 						<CircularProgressbar
 							value={activityData[0].heart_rate.average}
@@ -292,10 +319,28 @@ const DashboardData: React.FC<IProps> = (props) => {
 						/>
 						<div className='flex align-items--center mt--20'>
 							<Lottie animationData={heart_rate} loop={true} />
-							<div className='flex align-items--center cursor--pointer'>
+							<div
+								className='flex align-items--center cursor--pointer'
+								onClick={() => {
+									setPopup('heartrate');
+								}}
+							>
 								<p className='font-size--22 line-height--30 font--regular mr--10'>Heart rate</p>
 								<NextArrow />
 							</div>
+							{popup === 'heartrate' && (
+								<div className='position--absolute steps-detail overflow--auto'>
+									<span
+										className='font-size--30 font--semi-bold cursor--pointer float-right mr--15 mt--5'
+										onClick={() => setPopup('')}
+									>
+										X
+									</span>
+									<div className='individual-chart-wrapper mr--30'>
+										<Bar data={heartRateData} options={options} />
+									</div>
+								</div>
+							)}
 						</div>
 					</div>
 				</div>
