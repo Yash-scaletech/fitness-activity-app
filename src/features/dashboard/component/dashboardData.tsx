@@ -64,7 +64,7 @@ const DashboardData: React.FC<IProps> = (props) => {
 			date: labels,
 			popup: ''
 		});
-	}, []);
+	}, [activityData]);
 
 	const chartData = (label: string, data: number[], backgroundColor: string) => ({
 		labels: date,
