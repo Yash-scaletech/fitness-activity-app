@@ -9,7 +9,9 @@ interface IProps {
 	activityData: IActivity[];
 }
 
-const ACTIVITY_CLASSNAME = 'font-size--22 line-height--30 font--regular mr--10';
+const ACTIVITY_CLASSNAME =
+	'activity-details-box flex flex--column justify-content--center align-items--center width--30 flex--wrap font--22 font-size--22 line-height--30 font--regular mr--10';
+const ACTIVITY_HEAD_CLASS = 'font--30 font-size--30 line-height--50 font--semi-bold';
 
 const Activity: React.FC<IProps> = (props) => {
 	const { activityData } = props;
@@ -22,7 +24,7 @@ const Activity: React.FC<IProps> = (props) => {
 
 	return (
 		<div className='position--relative'>
-			<div className='flex flex--wrap width--full justify-content--center align-items--center mt--20'>
+			<div className='flex flex--wrap width--full justify-content--evenly align-items--center mt--20'>
 				{activityData.map((data) => (
 					<>
 						<div
@@ -32,86 +34,146 @@ const Activity: React.FC<IProps> = (props) => {
 								navigate(`/activity/${data.id}`);
 							}}
 						>
-							<p className='font-size--28 line-height--50 font--semi-bold mr--10'>{data.name}</p>
-							<NextArrow width='30' height='30' />
+							<p className='width--50 font--28 font-size--28 line-height--50 font--semi-bold mr--10'>
+								{data.name}
+							</p>
+							<NextArrow width='30' height='30' fill='#ed8e61' />
 						</div>
 					</>
 				))}
 			</div>
 			{isPopup && (
 				<div className='position--absolute activity-wrapper p--20'>
-					<span
-						className='font-size--28 font--semi-bold cursor--pointer float-right mr--15 mt--5'
-						onClick={() => {
-							setIsPopup(false);
-							navigate('/activity');
-						}}
-					>
-						X
-					</span>
-					<div className='activity-details'>
-						<p className={`${ACTIVITY_CLASSNAME}`}>name: {activityDetails?.name}</p>
-						<p className={`${ACTIVITY_CLASSNAME}`}>date: {activityDetails?.date}</p>
-						<p className={`${ACTIVITY_CLASSNAME}`}>duration: {activityDetails?.duration}</p>
-						<p className={`${ACTIVITY_CLASSNAME}`}>water_taken: {activityDetails?.water_taken}</p>
-						<p className={`${ACTIVITY_CLASSNAME}`}>calories_burned: {activityDetails?.calories_burned}</p>
+					<div className='mb--20'>
+						<span className={`${ACTIVITY_HEAD_CLASS} text--center`}>{activityDetails?.name}</span>
+						<span
+							className='font--28 font-size--28 font--semi-bold cursor--pointer text--white float-right mr--15 mt--5'
+							onClick={() => {
+								setIsPopup(false);
+								navigate('/activity');
+							}}
+						>
+							X
+						</span>
+					</div>
+					<div className='activity-details flex flex--wrap width--full text--white'>
 						<p className={`${ACTIVITY_CLASSNAME}`}>
-							average heart_rate: {activityDetails?.heart_rate.average}
+							Date <span className={`${ACTIVITY_HEAD_CLASS}`}>{activityDetails?.date}</span>
 						</p>
-						<p className={`${ACTIVITY_CLASSNAME}`}> max heart_rate: {activityDetails?.heart_rate.max}</p>
+						<p className={`${ACTIVITY_CLASSNAME}`}>
+							Duration <span className={`${ACTIVITY_HEAD_CLASS}`}>{activityDetails?.duration} min</span>
+						</p>
+						<p className={`${ACTIVITY_CLASSNAME}`}>
+							Water Taken{' '}
+							<span className={`${ACTIVITY_HEAD_CLASS}`}>{activityDetails?.water_taken} liters</span>
+						</p>
+						<p className={`${ACTIVITY_CLASSNAME}`}>
+							Calories Burned{' '}
+							<span className={`${ACTIVITY_HEAD_CLASS}`}>{activityDetails?.calories_burned} kcal</span>
+						</p>
+						<p className={`${ACTIVITY_CLASSNAME}`}>
+							Average Heart Rate{' '}
+							<span className={`${ACTIVITY_HEAD_CLASS}`}>{activityDetails?.heart_rate.average} bpm</span>
+						</p>
+						<p className={`${ACTIVITY_CLASSNAME}`}>
+							Maximum Heart Rate{' '}
+							<span className={`${ACTIVITY_HEAD_CLASS}`}>{activityDetails?.heart_rate.max} bpm</span>
+						</p>
 						{activityDetails?.distance && (
-							<p className={`${ACTIVITY_CLASSNAME}`}>distance: {activityDetails?.distance}</p>
+							<p className={`${ACTIVITY_CLASSNAME}`}>
+								Distance{' '}
+								<span className={`${ACTIVITY_HEAD_CLASS}`}>{activityDetails?.distance} km</span>
+							</p>
 						)}
 						{activityDetails?.steps && (
-							<p className={`${ACTIVITY_CLASSNAME}`}>steps: {activityDetails?.steps}</p>
+							<p className={`${ACTIVITY_CLASSNAME}`}>
+								Steps <span className={`${ACTIVITY_HEAD_CLASS}`}>{activityDetails?.steps}</span>
+							</p>
 						)}
 						{activityDetails?.pace && (
-							<p className={`${ACTIVITY_CLASSNAME}`}>average pace: {activityDetails?.pace.average}</p>
+							<p className={`${ACTIVITY_CLASSNAME}`}>
+								Average Pace{' '}
+								<span className={`${ACTIVITY_HEAD_CLASS}`}>{activityDetails?.pace.average}</span>
+							</p>
 						)}
 						{activityDetails?.pace && (
-							<p className={`${ACTIVITY_CLASSNAME}`}>best pace: {activityDetails?.pace.best}</p>
+							<p className={`${ACTIVITY_CLASSNAME}`}>
+								Best Pace <span className={`${ACTIVITY_HEAD_CLASS}`}>{activityDetails?.pace.best}</span>
+							</p>
 						)}
 						{activityDetails?.elevation_gain && (
-							<p className={`${ACTIVITY_CLASSNAME}`}>elevation_gain: {activityDetails?.elevation_gain}</p>
-						)}
-						{activityDetails?.speed && (
-							<p className={`${ACTIVITY_CLASSNAME}`}>average speed: {activityDetails?.speed.average}</p>
-						)}
-						{activityDetails?.speed && (
-							<p className={`${ACTIVITY_CLASSNAME}`}>max speed: {activityDetails?.speed.max}</p>
-						)}
-						{activityDetails?.reps && (
 							<p className={`${ACTIVITY_CLASSNAME}`}>
-								reps.average_per_set: {activityDetails?.reps.average_per_set}
+								Elevation Gain{' '}
+								<span className={`${ACTIVITY_HEAD_CLASS}`}>{activityDetails?.elevation_gain}</span>
+							</p>
+						)}
+						{activityDetails?.speed && (
+							<p className={`${ACTIVITY_CLASSNAME}`}>
+								Average Speed{' '}
+								<span className={`${ACTIVITY_HEAD_CLASS}`}>{activityDetails?.speed.average} km/hr</span>
+							</p>
+						)}
+						{activityDetails?.speed && (
+							<p className={`${ACTIVITY_CLASSNAME}`}>
+								Maximum Speed{' '}
+								<span className={`${ACTIVITY_HEAD_CLASS}`}>{activityDetails?.speed.max} km/hr</span>
 							</p>
 						)}
 						{activityDetails?.reps && (
-							<p className={`${ACTIVITY_CLASSNAME}`}>reps.sets: {activityDetails?.reps.sets}</p>
+							<p className={`${ACTIVITY_CLASSNAME}`}>
+								Reps Average Per Set{' '}
+								<span className={`${ACTIVITY_HEAD_CLASS}`}>
+									{activityDetails?.reps.average_per_set} km/hr
+								</span>
+							</p>
 						)}
 						{activityDetails?.reps && (
-							<p className={`${ACTIVITY_CLASSNAME}`}>reps.total: {activityDetails?.reps.total}</p>
-						)}
-						{activityDetails?.weight_lifted && (
 							<p className={`${ACTIVITY_CLASSNAME}`}>
-								weight_lifted.average_per_rep: {activityDetails?.weight_lifted.average_per_rep}
+								Reps Sets <span className={`${ACTIVITY_HEAD_CLASS}`}>{activityDetails?.reps.sets}</span>
+							</p>
+						)}
+						{activityDetails?.reps && (
+							<p className={`${ACTIVITY_CLASSNAME}`}>
+								Reps Total{' '}
+								<span className={`${ACTIVITY_HEAD_CLASS}`}>{activityDetails?.reps.total}</span>
 							</p>
 						)}
 						{activityDetails?.weight_lifted && (
 							<p className={`${ACTIVITY_CLASSNAME}`}>
-								weight_lifted.total: {activityDetails?.weight_lifted.total}
+								Weight Lifted Average Per Rep{' '}
+								<span className={`${ACTIVITY_HEAD_CLASS}`}>
+									{activityDetails?.weight_lifted.average_per_rep} kg
+								</span>
+							</p>
+						)}
+						{activityDetails?.weight_lifted && (
+							<p className={`${ACTIVITY_CLASSNAME}`}>
+								Weight Lifted Total{' '}
+								<span className={`${ACTIVITY_HEAD_CLASS}`}>
+									{activityDetails?.weight_lifted.total} kg
+								</span>
 							</p>
 						)}
 						{activityDetails?.laps && (
-							<p className={`${ACTIVITY_CLASSNAME}`}>laps: {activityDetails?.laps}</p>
+							<p className={`${ACTIVITY_CLASSNAME}`}>
+								Laps <span className={`${ACTIVITY_HEAD_CLASS}`}>{activityDetails?.laps}</span>
+							</p>
 						)}
 						{activityDetails?.pool_length && (
-							<p className={`${ACTIVITY_CLASSNAME}`}>pool_length: {activityDetails?.pool_length}</p>
+							<p className={`${ACTIVITY_CLASSNAME}`}>
+								Pool Length{' '}
+								<span className={`${ACTIVITY_HEAD_CLASS}`}>{activityDetails?.pool_length} meter</span>
+							</p>
 						)}
 						{activityDetails?.strides && (
-							<p className={`${ACTIVITY_CLASSNAME}`}>strides: {activityDetails?.strides}</p>
+							<p className={`${ACTIVITY_CLASSNAME}`}>
+								Strides <span className={`${ACTIVITY_HEAD_CLASS}`}>{activityDetails?.strides}</span>
+							</p>
 						)}
 						{activityDetails?.strokes && (
-							<p className={`${ACTIVITY_CLASSNAME}`}>strokes: {activityDetails?.strokes}</p>
+							<p className={`${ACTIVITY_CLASSNAME}`}>
+								Strokes <span className={`${ACTIVITY_HEAD_CLASS}`}>{activityDetails?.strokes}</span>
+							</p>
 						)}
 					</div>
 				</div>

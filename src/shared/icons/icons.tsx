@@ -2,6 +2,7 @@ export interface IIconProps {
 	width?: string;
 	height?: string;
 	className?: string;
+	fill?: string;
 }
 
 export const Home = ({ height, width, className }: IIconProps) => {
@@ -20,13 +21,13 @@ export const Fitness = ({ height, width, className }: IIconProps) => {
 	);
 };
 
-export const NextArrow = ({ height, width, className }: IIconProps) => {
+export const NextArrow = ({ height, width, className, fill }: IIconProps) => {
 	return (
 		<svg
 			width={width || '20'}
 			height={height || '20'}
 			className={className || ''}
-			fill='#ffffff'
+			fill={fill || '#ffffff'}
 			viewBox='0 0 493.456 493.456'
 			stroke='#ffffff'
 		>
@@ -42,3 +43,40 @@ export const NextArrow = ({ height, width, className }: IIconProps) => {
 		</svg>
 	);
 };
+
+export const BurgerMenuIcon = ({ height, width, className }: IIconProps) => (
+	<svg
+		width={width || '25'}
+		height={height || '14'}
+		className={className || ''}
+		viewBox='0 0 25 14'
+		fill='none'
+		xmlns='http://www.w3.org/2000/svg'
+	>
+		<rect width='25' height='2' fill='#ed8e61' />
+		<rect y='6' width='25' height='2' fill='#ed8e61' />
+		<rect y='12' width='25' height='2' fill='#ed8e61' />
+	</svg>
+);
+
+export const CrossIcon = ({ height, width, className }: IIconProps) => (
+	<svg
+		x='0px'
+		y='0px'
+		width={width || '25'}
+		height={height || '25'}
+		className={className || ''}
+		viewBox='0 0 121.31 122.876'
+		enableBackground='new 0 0 121.31 122.876'
+		xmlSpace='preserve'
+	>
+		<g>
+			<path
+				fill='#ed8e61'
+				fillRule='evenodd'
+				clipRule='evenodd'
+				d='M90.914,5.296c6.927-7.034,18.188-7.065,25.154-0.068 c6.961,6.995,6.991,18.369,0.068,25.397L85.743,61.452l30.425,30.855c6.866,6.978,6.773,18.28-0.208,25.247 c-6.983,6.964-18.21,6.946-25.074-0.031L60.669,86.881L30.395,117.58c-6.927,7.034-18.188,7.065-25.154,0.068 c-6.961-6.995-6.992-18.369-0.068-25.397l30.393-30.827L5.142,30.568c-6.867-6.978-6.773-18.28,0.208-25.247 c6.983-6.963,18.21-6.946,25.074,0.031l30.217,30.643L90.914,5.296L90.914,5.296z'
+			/>
+		</g>
+	</svg>
+);
