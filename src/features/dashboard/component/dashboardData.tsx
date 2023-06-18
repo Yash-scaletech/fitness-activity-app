@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 import Lottie from 'lottie-react';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
@@ -17,13 +16,12 @@ import { Bar } from 'react-chartjs-2';
 
 import heart_rate from '../JSON/heartRate.json';
 
-import { BurgerMenuIcon, CrossIcon, Home, NextArrow } from 'shared/icons/icons';
+import { NextArrow } from 'shared/icons/icons';
 
 import yoga from '../../../assets/images/yoga.png';
 import walking from '../../../assets/images/walking.png';
 import burn from '../../../assets/images/burn.png';
 import water from '../../../assets/images/water.png';
-import runWhite from '../../../assets/images/run-white.png';
 
 import { IActivity, IDataSet, IUser } from '../interface/dashboard';
 
@@ -38,7 +36,7 @@ interface IProps {
 
 const DashboardData: React.FC<IProps> = (props) => {
 	const { userData, activityData } = props;
-	const [isSideMenu, setIsSideMenu] = useState(false);
+
 	const [data, setData] = useState<IDataSet>({
 		steps: [],
 		calories: [],
@@ -48,7 +46,6 @@ const DashboardData: React.FC<IProps> = (props) => {
 		date: [''],
 		popup: ''
 	});
-	const navigate = useNavigate();
 
 	const { steps, calories, waterTaken, avgHeartRate, maxHeartRate, date, popup } = data;
 
@@ -145,12 +142,16 @@ const DashboardData: React.FC<IProps> = (props) => {
 				display: true,
 				text: `Fitness Activity`,
 				color: 'white'
+			},
+			tooltip: {
+				displayColors: false
 			}
 		},
 		scales: {
 			x: {
 				ticks: {
-					color: 'white'
+					color: 'white',
+					display: false
 				}
 			},
 			y: {
@@ -163,59 +164,6 @@ const DashboardData: React.FC<IProps> = (props) => {
 
 	return (
 		<div>
-			<div className='mob-header hide'>
-				<div onClick={() => setIsSideMenu(!isSideMenu)}>
-					{isSideMenu ? (
-						<CrossIcon className='cross-icon' />
-					) : (
-						<BurgerMenuIcon className='burger-menu--icon' />
-					)}
-				</div>
-			</div>
-			{isSideMenu && (
-				<div className='sidemenu-wrapper'>
-					<div className='personal-detail'>
-						<div className='mt--10'>
-							<p className='font--24 font-size--24 font--semi-bold'>{userData.name}</p>
-							<p className='font--md font-size--md font--regular mt--5'>{userData.email}</p>
-						</div>
-						<div className='width--full flex justify-content--evenly mt--30 mb--20'>
-							<div className='width--33 info'>
-								<p className='font--md font-size--md font--medium'>Age</p>
-								<p className='mt--5 font--light'>{userData.age} years</p>
-							</div>
-							<div className='width--33 info'>
-								<p className='font--md font-size--md font--medium'>Height</p>
-								<p className='mt--5 font--light'>{userData.height} cm</p>
-							</div>
-							<div className='width--33'>
-								<p className='font--md font-size--md font--medium'>Weight</p>
-								<p className='mt--5 font--light'>{userData.weight} kg</p>
-							</div>
-						</div>
-					</div>
-					<div className='nav-wrapper'>
-						<div
-							className={`flex align-items--center p--20 font--bold cursor--pointer`}
-							onClick={() => {
-								navigate('/dashboard');
-							}}
-						>
-							<Home width='25' height='25' className={`fill--white mr--5`} />
-							<span className='font--md font-size--md font--bold'>Dashboard</span>
-						</div>
-						<div
-							className={`flex align-items--center p--20 font--bold cursor--pointer`}
-							onClick={() => {
-								navigate('/activity');
-							}}
-						>
-							<img src={runWhite} alt='run' className='run-image mr--5' />
-							<span className='font--md font-size--md font--bold'>Activity</span>
-						</div>
-					</div>
-				</div>
-			)}
 			<div className='name-wrapper flex align-items--center width--full mt--30'>
 				<div className='width--70 p--10 ml--25'>
 					<h1 className='line-height--70 font--medium'>

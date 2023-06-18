@@ -285,6 +285,7 @@
 
 @media screen and (max-width: 426px) {
 	.container {
+		flex-direction: column;
 		.profile {
 			display: none;
 		}
@@ -306,35 +307,62 @@
 			}
 			.heart-chart-wrapper {
 				flex-wrap: wrap;
+				margin-top: 0;
 				.bar-chart-wrapper {
+					order: 2;
 					width: 100%;
 					min-height: 100%;
 					margin: 10px 20px;
 				}
 				.heart-box {
+					order: 1;
 					width: 100%;
 					margin: 10px 20px;
 				}
 			}
-			.mob-header {
-				display: flex;
-				justify-content: end;
-				padding: 10px;
-				float: right;
+			.steps-detail {
+				width: 100%;
+				left: 0;
 			}
-			.sidemenu-wrapper {
-				.personal-detail {
-					margin: 0 20px;
-					padding: 20px;
-					border-bottom: 1px solid #ed8e61;
+		}
+		.mob-header {
+			display: flex;
+			justify-content: end;
+			padding: 10px;
+			float: right;
+		}
+		.sidemenu-wrapper {
+			.personal-detail {
+				margin: 0 20px;
+				padding: 20px;
+				border-bottom: 1px solid #ed8e61;
+			}
+			.nav-wrapper {
+				margin: 0 20px;
+				border-bottom: 1px solid #ed8e61;
+				.run-image {
+					width: 25px;
 				}
-				.nav-wrapper {
-					margin: 0 20px;
-					border-bottom: 1px solid #ed8e61;
-					.run-image {
-						width: 25px;
-					}
-				}
+			}
+		}
+		.activity-name {
+			width: 100%;
+			margin: 10px 20px;
+		}
+		.activity-details {
+			justify-content: space-around;
+			.activity-details-box {
+				width: 40%;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 376px) {
+	.container {
+		.activity-details {
+			.activity-details-box {
+				width: 42%;
 			}
 		}
 	}
