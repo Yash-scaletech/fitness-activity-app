@@ -147,9 +147,6 @@
 	background-color: #4644464f !important;
 
 	.modal-dialog {
-		position: absolute;
-		left: 7px !important;
-		top: 5% !important;
 		max-width: calc(100% - 64px) !important;
 		min-height: 50% !important;
 		color: #ed8e61 !important;
@@ -173,7 +170,7 @@
 	}
 	.activity-details-box {
 		margin: 0 7px 10px 0;
-		width: 29%;
+		width: 29% !important;
 	}
 }
 
@@ -338,12 +335,6 @@
 				left: 0;
 			}
 		}
-		.mob-header {
-			display: flex;
-			justify-content: end;
-			padding: 10px;
-			float: right;
-		}
 		.sidemenu-wrapper {
 			.personal-detail {
 				margin: 0 20px;
@@ -366,7 +357,13 @@
 	.activity-details {
 		justify-content: space-around;
 		.activity-details-box {
-			width: 40%;
+			width: 28% !important;
+			margin: 2px;
+			font-size: 1rem;
+			line-height: 20px;
+			span {
+				font-size: 1.25rem;
+			}
 		}
 	}
 }
@@ -374,7 +371,7 @@
 @media screen and (max-width: 376px) {
 	.activity-details {
 		.activity-details-box {
-			width: 42%;
+			width: 26% !important;
 		}
 	}
 }

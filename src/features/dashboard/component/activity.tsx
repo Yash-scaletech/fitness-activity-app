@@ -44,7 +44,11 @@ const Activity: React.FC<IProps> = (props) => {
 				))}
 			</div>
 			{isPopup && (
-				<CustomModal show={isPopup} handleClose={() => setIsPopup(true)} className='activity-modal'>
+				<CustomModal
+					show={isPopup}
+					handleClose={() => setIsPopup(true)}
+					className='activity-modal flex justify-content--center align-items--center'
+				>
 					<div className='activity-wrapper'>
 						<div className='mb--20'>
 							<span className={`${ACTIVITY_HEAD_CLASS} text--center`}>{activityDetails?.name}</span>

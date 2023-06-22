@@ -53,7 +53,7 @@ const Dashboard = () => {
 					<div className='profile position--fixed width--20'>
 						<ProfileNav isDashboard={isDashboard} dashboardToggle={dashboardToggle} userData={userData} />
 					</div>
-					<div className='mob-header hide'>
+					<div className='hide mt--10 flex justify-content--end float-rught p--10'>
 						<div onClick={() => setIsSideMenu(!isSideMenu)}>
 							{isSideMenu ? (
 								<CrossIcon className='cross-icon' />
