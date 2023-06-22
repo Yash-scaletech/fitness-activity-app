@@ -129,34 +129,51 @@
 		height: 120px;
 		margin: 0 10px 15px 0;
 	}
+}
 
-	.activity-wrapper {
-		top: 0;
-		left: 7px;
-		max-width: calc(100% - 64px);
-		background-color: #464446;
-		border: 1px solid #505050;
-		border-radius: 25px;
+.activity-wrapper {
+	margin: 0 !important;
+}
+
+.activity-details-box {
+	border: 2px solid #ed8e61;
+	padding: 10px;
+	text-align: center;
+	margin: 0 10px 15px 0;
+	border-radius: 25px;
+}
+
+.activity-modal {
+	background-color: #4644464f !important;
+
+	.modal-dialog {
+		position: absolute;
+		left: 7px !important;
+		top: 5% !important;
+		max-width: calc(100% - 64px) !important;
+		min-height: 50% !important;
+		color: #ed8e61 !important;
+		margin: 0 auto !important;
+		padding: 20px;
+		border: 1px solid white;
+		border-radius: 25px !important;
+		background-color: #464446 !important;
 	}
 
-	.activity-details-box {
-		border: 2px solid #ed8e61;
-		padding: 10px;
-		text-align: center;
-		margin: 0 10px 15px 0;
-		border-radius: 25px;
+	.modal-close-btn {
+		float: right;
+		display: none;
 	}
 }
 
 @media screen and (max-width: 1281px) {
-	.container {
-		.activity-wrapper {
-			left: 0;
-			max-width: calc(100% - 53px);
-		}
-		.activity-details-box {
-			margin: 0 7px 10px 0;
-		}
+	.activity-wrapper {
+		left: 0;
+		max-width: 100%;
+	}
+	.activity-details-box {
+		margin: 0 7px 10px 0;
+		width: 29%;
 	}
 }
 
@@ -266,20 +283,16 @@
 		}
 		.activity-name {
 			width: 28%;
-		}
-		.activity-wrapper {
-			padding: 10px;
-			max-width: calc(100% - 20px);
-		}
-		.activity-details-box {
-			width: 29%;
-			padding: 5px;
-		}
-		.activity-name {
 			.font--28 {
 				width: unset;
 			}
 		}
+	}
+	.activity-wrapper {
+		padding: 10px;
+	}
+	.activity-details-box {
+		padding: 5px;
 	}
 }
 
@@ -349,21 +362,19 @@
 			width: 100%;
 			margin: 10px 20px;
 		}
-		.activity-details {
-			justify-content: space-around;
-			.activity-details-box {
-				width: 40%;
-			}
+	}
+	.activity-details {
+		justify-content: space-around;
+		.activity-details-box {
+			width: 40%;
 		}
 	}
 }
 
 @media screen and (max-width: 376px) {
-	.container {
-		.activity-details {
-			.activity-details-box {
-				width: 42%;
-			}
+	.activity-details {
+		.activity-details-box {
+			width: 42%;
 		}
 	}
 }
